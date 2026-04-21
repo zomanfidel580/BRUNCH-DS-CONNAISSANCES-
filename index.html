@@ -230,15 +230,14 @@ footer p { color:rgba(255,248,240,.28); font-size:.82rem; }
 <section id="paiement">
   <div class="container">
     <div class="rev" style="text-align:center; margin-bottom:2rem">
-      <div class="s-label">💳 Moyens de paiement</div>
-      <h2 class="s-title" style="margin-bottom:.6rem">Paiement Mobile Money</h2>
-      <p style="opacity:.5; font-size:.9rem; max-width:480px; margin:0 auto">Le paiement se fait directement sur votre téléphone via votre opérateur</p>
+      <div class="s-label">💸 Transfert Mobile Money</div>
+      <h2 class="s-title" style="margin-bottom:.6rem">Envoie ton paiement</h2>
+      <p style="opacity:.5; font-size:.9rem; max-width:480px; margin:0 auto">Transfère directement le montant sur le numéro ci-dessous via ton opérateur</p>
     </div>
     <div class="pay-grid">
       <!-- WAVE -->
-      <div class="pay-card pc-wave rev d1">
+      <div class="pay-card pc-wave rev d1" onclick="openWave()" style="cursor:pointer" title="Ouvrir Wave">
         <div class="pc-logo">
-          <!-- Wave SVG Logo -->
           <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="80" height="80" rx="16" fill="white" fill-opacity="0.15"/>
             <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="white">W</text>
@@ -247,12 +246,11 @@ footer p { color:rgba(255,248,240,.28); font-size:.82rem; }
         </div>
         <div class="pc-name">Wave</div>
         <div class="pc-num">+225 07 59 59 71 93</div>
-        <span class="pc-tag">✓ Accepté ici</span>
+        <span class="pc-tag">👆 Appuie pour transférer</span>
       </div>
       <!-- ORANGE MONEY -->
-      <div class="pay-card pc-orange rev d2">
+      <div class="pay-card pc-orange rev d2" onclick="openOrangeMoney()" style="cursor:pointer" title="Ouvrir Orange Money">
         <div class="pc-logo">
-          <!-- Orange Money SVG Logo -->
           <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="80" height="80" rx="16" fill="white" fill-opacity="0.15"/>
             <circle cx="40" cy="40" r="22" fill="white" fill-opacity="0.25" stroke="white" stroke-width="3"/>
@@ -262,7 +260,7 @@ footer p { color:rgba(255,248,240,.28); font-size:.82rem; }
         </div>
         <div class="pc-name">Orange Money</div>
         <div class="pc-num">+225 07 59 59 71 93</div>
-        <span class="pc-tag">✓ Accepté ici</span>
+        <span class="pc-tag">👆 Appuie pour transférer</span>
       </div>
     </div>
 
@@ -277,11 +275,11 @@ footer p { color:rgba(255,248,240,.28); font-size:.82rem; }
           </div>
           <div style="display:flex; gap:1rem; align-items:flex-start">
             <div style="background:var(--rose); color:#fff; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:.78rem; font-weight:800; flex-shrink:0; margin-top:1px">2</div>
-            <div style="font-size:.9rem; line-height:1.55; opacity:.8">Une demande de paiement est automatiquement envoyée sur <strong style="color:var(--cream)">ton numéro</strong> via ton opérateur. Tu n'as qu'à valider depuis ton téléphone.</div>
+            <div style="font-size:.9rem; line-height:1.55; opacity:.8">Clique sur le bouton de transfert — ton app <strong style="color:var(--cream)">Wave ou Orange Money</strong> s'ouvre automatiquement avec le numéro et le montant pré-remplis.</div>
           </div>
           <div style="display:flex; gap:1rem; align-items:flex-start">
             <div style="background:var(--rose); color:#fff; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:.78rem; font-weight:800; flex-shrink:0; margin-top:1px">3</div>
-            <div style="font-size:.9rem; line-height:1.55; opacity:.8">Une fois le paiement confirmé, tu recevras ton <strong style="color:var(--cream)">billet numéroté avec QR Code</strong> unique par WhatsApp.</div>
+            <div style="font-size:.9rem; line-height:1.55; opacity:.8">Valide le transfert depuis ton app. Une fois confirmé, tu recevras ton <strong style="color:var(--cream)">billet numéroté avec QR Code</strong> par WhatsApp.</div>
           </div>
         </div>
       </div>
@@ -306,9 +304,9 @@ footer p { color:rgba(255,248,240,.28); font-size:.82rem; }
         <input id="nom" class="f-input" type="text" placeholder="Ex : Konan Aya Marie" required>
       </div>
       <div class="f-field">
-        <label class="f-label" for="telephone">Ton numéro de paiement</label>
+        <label class="f-label" for="telephone">Ton numéro (pour confirmation)</label>
         <input id="telephone" class="f-input" type="tel" placeholder="+225 07 XX XX XX XX" required>
-        <div style="font-size:.72rem; opacity:.45; margin-top:.4rem; padding-left:.2rem">La demande de paiement sera envoyée sur ce numéro</div>
+        <div style="font-size:.72rem; opacity:.45; margin-top:.4rem; padding-left:.2rem">Pour te retrouver après ton transfert</div>
       </div>
       <div class="f-field">
         <label class="f-label" for="operateur">Opérateur Mobile Money</label>
@@ -331,10 +329,10 @@ footer p { color:rgba(255,248,240,.28); font-size:.82rem; }
         <span class="m-value" id="montantAffiche">5 000 FCFA</span>
       </div>
       <div class="step-info">
-        <strong>Comment ça marche :</strong> Après avoir cliqué sur le bouton, une demande de paiement sera envoyée sur <strong id="stepTel">ton numéro</strong>. Tu valides le paiement depuis ton téléphone. L'argent est reçu sur le <strong>+225 07 59 59 71 93</strong>.
+        <strong>Comment ça marche :</strong> Après avoir cliqué sur le bouton, ton app <strong id="stepOp">Wave ou Orange Money</strong> s'ouvre automatiquement avec le numéro <strong>+225 07 59 59 71 93</strong> et le montant de <strong id="stepMontant">5 000 FCFA</strong> pré-remplis. Tu n'as plus qu'à confirmer le transfert.
       </div>
       <button onclick="submitForm()" class="btn btn-rose" id="btn-submit" style="width:100%;justify-content:center;padding:1.1rem;font-size:.95rem;margin-top:.4rem">
-        💳 Envoyer la demande de paiement
+        💸 Transférer maintenant
       </button>
     </div>
   </div>
@@ -502,16 +500,105 @@ function toast(msg,ms=3000){
   setTimeout(()=>t.classList.remove('on'),ms);
 }
 
+// NUMÉRO BÉNÉFICIAIRE
+const BENEFICIAIRE = '0759597193'; // sans préfixe pays pour les liens
+const BENEFICIAIRE_AFFICHE = '+225 07 59 59 71 93';
+
 // MONTANT DYNAMIQUE
 function updateMontant(){
   const nb=parseInt(document.getElementById('nombre').value)||1;
-  const m=(nb*5000).toLocaleString('fr-FR');
+  const montant=nb*5000;
+  const m=montant.toLocaleString('fr-FR');
   document.getElementById('montantAffiche').textContent=m+' FCFA';
-  const tel=document.getElementById('telephone').value.trim();
-  document.getElementById('stepTel').textContent=tel?tel:'ton numéro';
+  const op=document.getElementById('operateur').value;
+  if(document.getElementById('stepOp')) document.getElementById('stepOp').textContent=op;
+  if(document.getElementById('stepMontant')) document.getElementById('stepMontant').textContent=m+' FCFA';
 }
 document.getElementById('telephone').addEventListener('input',updateMontant);
 document.getElementById('nombre').addEventListener('change',updateMontant);
+document.getElementById('operateur').addEventListener('change',updateMontant);
+
+// LIENS DEEP LINK
+function openWave(){
+  const nb=parseInt(document.getElementById('nombre').value)||1;
+  const montant=nb*5000;
+  // Wave CI deep link
+  const url = `wave://send?phone=${BENEFICIAIRE}&amount=${montant}`;
+  window.location.href = url;
+  // Fallback: si l'app ne s'ouvre pas, afficher les infos
+  setTimeout(()=>{
+    toast('📱 Si Wave ne s\'est pas ouvert, transfère manuellement au '+BENEFICIAIRE_AFFICHE, 5000);
+  }, 1500);
+}
+
+function openOrangeMoney(){
+  const nb=parseInt(document.getElementById('nombre').value)||1;
+  const montant=nb*5000;
+  // Orange Money CI deep link
+  const url = `orangemoney://transfer?to=${BENEFICIAIRE}&amount=${montant}`;
+  window.location.href = url;
+  setTimeout(()=>{
+    toast('📱 Si Orange Money ne s\'est pas ouvert, compose le #144# et transfère au '+BENEFICIAIRE_AFFICHE, 5000);
+  }, 1500);
+}
+
+// FORM SUBMIT
+function submitForm(){
+  const nom=document.getElementById('nom').value.trim();
+  const tel=document.getElementById('telephone').value.trim();
+  if(!nom||!tel){ toast('⚠️ Remplis tous les champs !'); animM('m-shake'); showBubble('err'); return; }
+  const op=document.getElementById('operateur').value;
+  const nb=parseInt(document.getElementById('nombre').value)||1;
+  const montant=nb*5000;
+
+  // Confirmation avec instructions de transfert
+  const confirmed = confirm(
+    `✅ Récapitulatif de ta réservation\n\n` +
+    `👤 Nom : ${nom}\n` +
+    `📱 Ton numéro : ${tel}\n` +
+    `💳 Opérateur : ${op}\n` +
+    `🎟️ Places : ${nb}\n` +
+    `💰 Montant à transférer : ${montant.toLocaleString('fr-FR')} FCFA\n\n` +
+    `👉 Transfère ${montant.toLocaleString('fr-FR')} FCFA au :\n` +
+    `📞 ${BENEFICIAIRE_AFFICHE} via ${op}\n\n` +
+    `Clique OK pour ouvrir ton app ${op} 👇`
+  );
+  if(!confirmed) return;
+
+  // Sauvegarder l'inscription
+  const entry={ date:new Date().toLocaleDateString('fr-FR'), nom, telephone:tel, operateur:op, nombre:nb, montant, statut:'En attente de transfert' };
+  const data=loadData(); data.push(entry); saveData(data);
+
+  animM('m-dance'); showBubble('ok');
+  confetti({ particleCount:100, spread:75, colors:['#F72585','#FFBE0B','#FF6B6B','#06D6A0','#fff'] });
+
+  // Ouvrir l'app selon l'opérateur
+  if(op === 'Wave'){
+    const url = `wave://send?phone=${BENEFICIAIRE}&amount=${montant}`;
+    window.location.href = url;
+    setTimeout(()=>{
+      toast(`📱 Ouvre Wave et transfère ${montant.toLocaleString('fr-FR')} FCFA au ${BENEFICIAIRE_AFFICHE}`, 6000);
+    }, 1200);
+  } else {
+    const url = `orangemoney://transfer?to=${BENEFICIAIRE}&amount=${montant}`;
+    window.location.href = url;
+    setTimeout(()=>{
+      toast(`📱 Ouvre Orange Money et transfère ${montant.toLocaleString('fr-FR')} FCFA au ${BENEFICIAIRE_AFFICHE}`, 6000);
+    }, 1200);
+  }
+
+  // Afficher un message de suivi avec WhatsApp
+  setTimeout(()=>{
+    const waMsg = encodeURIComponent(`Bonjour ! J'ai effectué mon transfert de ${montant.toLocaleString('fr-FR')} FCFA pour le Brunch des Connaissances.\n\nNom : ${nom}\nTéléphone : ${tel}\nOpérateur : ${op}\nNombre de places : ${nb}`);
+    const waUrl = `https://wa.me/2250759597193?text=${waMsg}`;
+    const goWa = confirm(`✅ Transfert initié !\n\nAprès avoir confirmé le transfert dans ton app, envoie-nous un message WhatsApp pour confirmer ta place. Veux-tu ouvrir WhatsApp maintenant ?`);
+    if(goWa) window.open(waUrl, '_blank');
+  }, 3500);
+
+  document.getElementById('nom').value='';
+  document.getElementById('telephone').value='';
+  updateMontant();
+}
 
 // MASCOTTE
 const wrap=document.getElementById('mascot-wrap');
@@ -567,36 +654,7 @@ function loadData(){ return JSON.parse(localStorage.getItem(STORAGE_KEY))||[]; }
 function saveData(d){ localStorage.setItem(STORAGE_KEY,JSON.stringify(d)); }
 function getNextNum(){ let n=parseInt(localStorage.getItem(NEXT_TICKET_KEY))||1; localStorage.setItem(NEXT_TICKET_KEY,n+1); return n; }
 
-function submitForm(){
-  const nom=document.getElementById('nom').value.trim();
-  const tel=document.getElementById('telephone').value.trim();
-  if(!nom||!tel){ toast('⚠️ Remplis tous les champs !'); animM('m-shake'); showBubble('err'); return; }
-  const op=document.getElementById('operateur').value;
-  const nb=document.getElementById('nombre').value;
-  const montant=parseInt(nb)*5000;
 
-  // Confirmation avant envoi
-  const confirmed = confirm(
-    `✅ Récapitulatif de ta demande\n\n` +
-    `👤 Nom : ${nom}\n` +
-    `📱 Numéro : ${tel}\n` +
-    `💳 Opérateur : ${op}\n` +
-    `🎟️ Places : ${nb}\n` +
-    `💰 Montant : ${montant.toLocaleString('fr-FR')} FCFA\n\n` +
-    `Une demande de paiement sera envoyée sur le ${tel} via ${op}.\n` +
-    `L'argent sera reçu sur le +225 07 59 59 71 93.\n\n` +
-    `Confirmes-tu ?`
-  );
-  if(!confirmed) return;
-
-  const entry={ date:new Date().toLocaleDateString('fr-FR'), nom, telephone:tel, operateur:op, nombre:nb, statut:'En attente' };
-  const data=loadData(); data.push(entry); saveData(data);
-  toast('✅ Demande envoyée ! Valide sur ton téléphone 📱'); animM('m-dance'); showBubble('ok');
-  confetti({ particleCount:100, spread:75, colors:['#F72585','#FFBE0B','#FF6B6B','#06D6A0','#fff'] });
-  document.getElementById('nom').value='';
-  document.getElementById('telephone').value='';
-  updateMontant();
-}
 
 // TICKET (affiché après validation admin)
 function showTicket(nom, num, tel){
